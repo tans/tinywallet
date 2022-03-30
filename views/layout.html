@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiny wallet - simplest hot wallet for crypto, use to earn.</title>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="https://unpkg.com/axios"></script>
+    <script src="https://unpkg.com/dayjs@1.11.0"></script>
+    <script src="https://unpkg.com/dayjs@1.11.0/plugin/relativeTime.js"></script>
+    <link rel="stylesheet" href="/css/tailwind.build.css">
+    <script>
+        dayjs.extend(window.dayjs_plugin_relativeTime);
+    </script>
+</head>
+<body>
+    <div class="mx-auto max-w-3xl">
+        <div class="flex items-center w-full py-4  border-b-4 border-gray-700">
+            <div class="ml-2 text-xl font-black mr-10">Tiny Wallet</div>
+            <div class="flex-1 mx-2 font-medium text-base flex items-center">
+                <div class="mx-2">
+                    <a href="/" class="hover:underline">Home</a></div>
+                <div class="mx-2">
+                    <a href="/radar" class="hover:underline">Radar</a></div>
+                <div class="mx-2">
+                    <a href="/wallet" class="hover:underline">Wallet</a></div>
+                <!-- <div class="mx-1">Airdrop</div> -->
+            </div>
+        </div>
+        <div class="border-b-2 border-gray-700 pb-1 w-full"></div>
+        <!-- <div class=""></div> -->
+        <div class="p-2">
+
+            <%- body %>
+        </div>
+    </div>
+</body>
+</html>

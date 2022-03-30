@@ -1,0 +1,65 @@
+<script src="https://unpkg.com/vuebars@0.1.8/dist/vue-bars.js"></script>
+
+<div id="app"  >
+    <div class="p-2 font-black" >{{symbol}}</div>
+
+    <bars :data="stats" :gradient="['#000000', '#000000']"> </bars>
+    <a
+        target="_blank"
+        v-bind:href="'https://etherscan.io/tx/' + flow.hash"
+        class="cursor-pointer my-2 bg-gray-100 rounded p-2 flex items-center hover:bg-blue-200"
+        v-for="flow in flows"
+    >
+        <div class="w-48">
+            <div class="text-sm font-semibold">{{flow.symbol}}</div>
+            <div class="text-xs">{{flow.name}}</div>
+        </div>
+        <div class="flex-1 px-2 text-xs">
+            <div class="text-gray-500">
+                <span class="inline-block w-12">FROM:</span>{{flow.from}}
+            </div>
+            <div class="text-gray-500">
+                <span class="inline-block w-12">TO: </span>{{flow.to}}
+            </div>
+            <div class="">
+                <span class="inline-block w-12">VALUE: </span>{{flow.value}}
+            </div>
+        </div>
+        <div class="text-gray-400 text-xs">{{flow.time}}</div>
+    </a>
+
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data: function(){
+            return {
+                symbol: '<%=symbol%>',
+                flows: [],
+                stats: [],
+            }
+        },
+        created: function(){
+            axios.get("/api/radar/flows/1/<%=symbol%>").then((res) => {
+                let flows = this.flows.concat(res.data);
+                for(let flow of flows){
+                    flow.time = new dayjs(flow.time).fromNow();
+                }
+                this.flows = flows
+            });
+            axios.get("/api/radar/stats/1/<%=symbol%>").then((res) => {
+                let stats = this.stats.concat(res.data);
+                this.stats = stats.map((stat)=>{
+                    return stat.cnt
+                })
+            });
+
+        },
+
+
+
+        methods: {
+
+        }
+    })
+</script>
