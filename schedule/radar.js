@@ -31,10 +31,8 @@ const checkTx = async (chainId) => {
                         blockHeight: item.block_height,
                         hash: item.tx_hash,
                     };
-                    await db.TOKEN_FLOWS.insert(flow);
-                    console.log(flow);
-
-                    await db.TOKEN_STATS.findOneAndUpdate(
+                    db.TOKEN_FLOWS.insert(flow).then();
+                    db.TOKEN_STATS.findOneAndUpdate(
                         {
                             hour: moment(item.block_signed_at).format(
                                 "YYYY-MM-DD-HH"
@@ -49,7 +47,7 @@ const checkTx = async (chainId) => {
                         {
                             upsert: true,
                         }
-                    );
+                    ).then();
                 }
             }
         }
