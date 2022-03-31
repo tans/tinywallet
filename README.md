@@ -1,6 +1,7 @@
 
 [TinyWallet](https://tinywallet.app)
 
+![Preview](public/preview.png)
 ## Introduction
 
 TinyWallet is a cloud base wallet for everybody.
