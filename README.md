@@ -14,9 +14,7 @@ TinyWallet is a cloud base wallet.
 
 
 ### Covalent API Details
-1. `` Get a transation with decoded event logs `` - thanks to this power api, we can analytic the token transfer in a transation. super easy to find the most potensial token.
-
-
+[Get a transaction](https://www.covalenthq.com/docs/api/#/0/Get%20a%20transaction/USD/1) `` Get a transation with decoded event logs `` - thanks to this power api, we can analytic the token transfer in a transation. super easy to find the most potensial token.
 
 
 ## Independent deploy
