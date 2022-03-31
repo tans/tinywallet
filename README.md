@@ -1,14 +1,14 @@
 
 [TinyWallet](https://tinywallet.app)
 
-![Preview](public/preview.png)
+<img src="public/preview.png" style="width:480px"/>
 ## Features
 
 TinyWallet is a cloud base wallet.
 
-. token radar - find recently tranfers grow up fast token
-. crosschain wallet
-. api support, not only a wallet, you can build a puppet controller your wallet
+1. token radar - find recently tranfers grow up fast token
+2. crosschain wallet
+3. api support, not only a wallet, you can build a puppet controller your wallet
 
 > This project was developed for [Multi-Chain Web3 Projects](https://gitcoin.co/issue/covalenthq/covalent-gitcoin-bounties/19/100028550) bounty at the [Grants Round 13 Hackathon](https://gitcoin.co/hackathon/gr13/?) sponsored by [Covalent](https://www.covalenthq.com).
 
@@ -25,3 +25,9 @@ TinyWallet is a cloud base wallet.
 4. `pm2 start`
 
 so easy, no magic
+
+## Roadmap
+
+1. a use to earn wallet
+2. token change subscrition & notification
+3. api support,  wallet with puppet 
