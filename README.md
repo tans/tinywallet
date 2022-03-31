@@ -10,7 +10,7 @@ TinyWallet is a cloud base wallet.
 2. crosschain wallet
 3. api support, not only a wallet, you can build a puppet controller your wallet
 
-> This project was developed for [Multi-Chain Web3 Projects](https://gitcoin.co/issue/covalenthq/covalent-gitcoin-bounties/19/100028550) bounty at the [Grants Round 13 Hackathon](https://gitcoin.co/hackathon/gr13/?) sponsored by [Covalent](https://www.covalenthq.com).
+> TinyWallet bounty at the [Grants Round 13 Hackathon](https://gitcoin.co/hackathon/gr13/?) sponsored by [Covalent](https://www.covalenthq.com).
 
 
 ### Covalent API Details
