@@ -2,24 +2,22 @@
 [TinyWallet](https://tinywallet.app)
 
 ![Preview](public/preview.png)
-## Introduction
+## Features
 
-TinyWallet is a cloud base wallet for everybody.
+TinyWallet is a cloud base wallet.
 
-User just need to use an id and password to signup.
+. token radar - find recently tranfers grow up fast token
+. crosschain wallet
+. api support, not only a wallet, you can build a puppet controller your wallet
 
-no private key no 12 word, super easy to use.
+> This project was developed for [Multi-Chain Web3 Projects](https://gitcoin.co/issue/covalenthq/covalent-gitcoin-bounties/19/100028550) bounty at the [Grants Round 13 Hackathon](https://gitcoin.co/hackathon/gr13/?) sponsored by [Covalent](https://www.covalenthq.com).
 
 
-## Safety
+### Covalent API Details
+1. `` Get a transation with decoded event logs `` - thanks to this power api, we can analytic the token transfer in a transation. super easy to find the most potensial token.
 
-private key is encryed to save at database.
 
-keep your huge wealth in other cold wallet, TinyWallet is not your bank. it design for you to take it easy.
 
-for developer or institue , you can fork it and deploy to your own server.
-
-and most important, keep your password safe, don't enter it until you know what you are doing.
 
 ## Independent deploy
 
