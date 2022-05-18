@@ -3,15 +3,16 @@
 
 ## UseCase
 
-* **Transation Approve** - role-based management, seperate view, submit, approve roles
-* **Assert Audit** - exchange between coins and currency
-* **Coin Shop** - customized nft shop
 
+* **Coin Shop** - exchange between coins and currency
+* **NFT Shop** - excustomized nft shop
+* **Transation Approve** - role-based management, seperate view, submit, approve roles
+* **Assert Audit** - tokens, nfts transactions audit by tags, users
 
 ## Api-First Design
 
 * **create or import wallet** `/api/wallet`
-* **new api account** `/api/wallet`
+* **new api account** `/api/wallet/:address/account`
 * **submit transation** `/api/wallet/:address/transation`
 * [more...](views/doc/api.md)
 
