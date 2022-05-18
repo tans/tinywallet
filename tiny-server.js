@@ -21,12 +21,13 @@ render(app, {
 app.use(serve(path.join(__dirname, "public")));
 app.use(router.routes());
 const httpServer = createServer(app.callback());
-const io = new Server(httpServer, {
-    /* options */
-});
+// const io = new Server(httpServer, {
+//     /* options */
+// });
 
-io.on("connection", (socket) => {
-    console.log(socket.id);
-});
+// io.on("connection", (socket) => {
+//     console.log(socket.id);
+// });
 
 httpServer.listen(process.env.PORT);
+console.log("start");

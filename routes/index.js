@@ -3,15 +3,11 @@ const Router = require("koa-router");
 const router = new Router();
 const web = require("./web");
 const wallet = require("./wallet");
-const radar = require("./radar");
+const doc = require("./doc");
+const api = require("./api");
 
 router.get("/", web.index);
-router.get("/radar", web.radarPage);
-router.get("/token/:chainId/:symbol", web.tokenPage);
 router.get("/wallet", web.walletPage);
-router.get("/api/radar/flows", radar.getFlows);
-router.get("/api/radar/flows/:chainId/:symbol", radar.getFlowsBySymbol);
-router.get("/api/radar/stats/:chainId/:symbol", radar.getStatsBySymbol);
-router.get("/api/radar/skyrockets", radar.getSkyrockets);
+router.get("/doc", doc.docPage);
 
 module.exports = router;
