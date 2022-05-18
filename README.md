@@ -1,7 +1,5 @@
 
-[TinyWallet](https://tinywallet.app)
-
-**TinyWallet** - self-hosted programmable crypto wallet.
+**[TinyWallet](https://tinywallet.app)** - self-hosted programmable crypto wallet.
 
 ## UseCase
 
@@ -10,7 +8,7 @@
 * **Coin Shop** - customized nft shop
 
 
-## Api-Firset Design
+## Api-First Design
 
 * **create or import wallet** `/api/wallet`
 * **new api account** `/api/wallet`
