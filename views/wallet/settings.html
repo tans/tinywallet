@@ -1,0 +1,60 @@
+<div id="app" class="mt-4">
+
+    <div class="my-2 p-2 bg-yellow-50 rounded">
+        <div class="font-black my-4">Wallet Address: <span class="badge">{{address}}</span></div>
+        <div class="btn  btn-sm btn-primary" @click="openPrivateFlag=true">Show PrivateKey </div>
+    </div>
+
+    <div class="my-2 p-2 bg-blue-50 rounded">
+        <div class="font-black my-4">Sub Account</div>
+        <div class="btn  btn-sm btn-primary">New Sub Account</div>
+    </div>
+
+    <div class="my-2 flex items-end justify-end">
+        <a href="/wallet/logout" class="btn btn-error btn-sm">logout</a>
+    </div>
+
+    <div class="modal" @click="openPrivateFlag=false" v-bind:class="{'modal-open':openPrivateFlag}">
+        <div class="modal-box" v-on:click.stop>
+            <h3 class="font-bold text-lg">Show Wallet PrivateKey </h3>
+            <div v-if="!private">
+                <input class="my-4 input input-sm input-bordered w-full" type="password"
+                    placeholder="input wallet password" v-model="password" />
+                <button @click=" showPrivate" class="my-2 w-full  btn-sm btn btn-primary">continue</button>
+            </div>
+            <div v-else class="break-all">
+                {{private}}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    const address = "<%=wallet.address%>"
+    var app = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                openPrivateFlag: false,
+                private: "",
+                address: address,
+                password: ""
+            }
+        },
+        methods: {
+            showPrivate: function () {
+                const that = this;
+                axios.post("/api/wallet/private", {
+                    address: this.address,
+                    password: this.password,
+                }).then((res) => {
+                    that.private = res.data
+                }).catch(function (err) {
+                    weui.topTips(getAxiosErrorMessage(err));
+                })
+            }
+        }
+    })
+</script>

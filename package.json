@@ -4,25 +4,29 @@
     "description": "wallet for blockchain",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "mocha",
         "style": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/tailwind.min.css --watch"
     },
     "author": "tans",
     "license": "ISC",
     "dependencies": {
+        "@alch/alchemy-web3": "^1.4.2",
         "async": "^3.2.3",
         "axios": "^0.26.1",
+        "daisyui": "^2.15.3",
         "dotenv": "^16.0.0",
         "ethers": "^5.6.0",
         "koa": "^2.13.4",
-        "koa-ejs": "^4.3.0",
+        "koa-ejs": "git+https://github.com/tans/koa-ejs.git",
+        "koa-generic-session-mongo": "^0.4.0",
         "koa-router": "^10.1.1",
+        "koa-session-minimal": "^4.0.2",
         "koa-static": "^5.0.0",
         "lodash": "^4.17.21",
         "moment": "^2.29.1",
-        "monk": "^7.3.4",
-        "node-schedule": "^2.1.0",
-        "socket.io": "^4.4.1",
-        "sockjs": "^0.3.24"
+        "monk": "^7.3.4"
+    },
+    "devDependencies": {
+        "mocha": "^10.0.0"
     }
 }

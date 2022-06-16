@@ -1,0 +1,87 @@
+<div id="app" class="text-center mt-4" v-cloak>
+    <div class="font-black">Create Wallet</div>
+    <div class="form-control mx-auto w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">id</span>
+            <!-- <span class="label-text-alt">a-z1-9</span> -->
+        </label>
+        <input v-model="id" name="id" type="text" placeholder="wallet id"
+            class="input input-sm input-bordered w-full max-w-xs" />
+    </div>
+
+    <div class="form-control mx-auto w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">password</span>
+        </label>
+        <input v-model="password" name="password" type="password" placeholder="wallet password"
+            class="input input-sm input-bordered w-full max-w-xs" />
+    </div>
+    <div class="form-control mx-auto w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">confirm password</span>
+        </label>
+        <input v-model="confirmPassword" type="password" placeholder="wallet password again"
+            class="input input-sm input-bordered w-full max-w-xs" />
+    </div>
+    <div class="form-control mt-2 mx-auto w-full max-w-xs">
+        <label class="label cursor-pointer">
+            <span class="label-text">Import PrivateKey</span>
+            <input v-model="importFlag" type="checkbox" class="toggle toggle-sm" />
+        </label>
+    </div>
+
+    <div v-if="importFlag" class="form-control mx-auto w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">PrivateKey</span>
+        </label>
+        <textarea v-model="privateKey" type="text" placeholder="input private key here"
+            class="textarea textarea-bordered w-full max-w-xs"></textarea>
+    </div>
+    <div v-else class="form-control mx-auto w-full max-w-xs">
+        <div class="alert   shadow-lg">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Generate random private key</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control mt-4 mx-auto w-full max-w-xs">
+        <button class="btn btn-sm btn-primary" @click="create">create</button>
+    </div>
+
+    <div class="mt-16">
+        <a href="login" class="link">login</a>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            id: "",
+            password: "",
+            confirmPassword: "",
+            privateKey: "",
+            importFlag: false
+        },
+        methods: {
+            create: function () {
+                axios.post('/api/wallet/create', {
+                    id: this.id,
+                    password: this.password,
+                    privateKey: this.privateKey
+                }).then(function (res) {
+                    console.log(res.data);
+                    location.href = "/wallet/home"
+                }).catch(function (err) {
+                    weui.topTips(getAxiosErrorMessage(err));
+                })
+            }
+        }
+    })
+</script>

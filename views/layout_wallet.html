@@ -16,9 +16,8 @@
     <script src="//unpkg.com/weui.js@1.2.15/dist/weui.min.js"></script>
     <script src="//unpkg.com/dayjs@1.11.0"></script>
     <script src="//unpkg.com/dayjs@1.11.0/plugin/relativeTime.js"></script>
+    <script src="//unpkg.com/bignumber.js@9.0.2/bignumber.js"></script>
     <script src="/js/helper.js"></script>
-
-
     <script>
         dayjs.extend(window.dayjs_plugin_relativeTime);
     </script>
@@ -26,22 +25,29 @@
 
 <body>
     <div class="mx-auto max-w-3xl">
-        <div class="flex items-center w-full py-4  border-b-4 border-gray-700">
-            <a href="/" class="ml-2 text-xl font-black mr-10">Tiny Wallet</a>
+        <div class="flex items-center w-full py-4 px-2">
+            <a href="/" class=" text-xl font-black mr-10">Tiny Wallet</a>
             <div class="flex-1 mx-2 font-medium text-base flex items-center">
                 <div class="mx-2">
-                    <a href="/" class="hover:underline">Home</a>
+                    <a href="/wallet/home" class="hover:underline">Home</a>
                 </div>
                 <div class="mx-2">
-                    <a href="/doc" class="hover:underline">Doc</a>
+                    <a href="/wallet/transations" class="hover:underline">Transations</a>
                 </div>
+                <div class="mx-2">
+                    <a href="/wallet/plugins" class="hover:underline">Plugins</a>
+                </div>
+                <div class="mx-2">
+                    <a href="/wallet/earn" class="hover:underline">Earn</a>
+                </div>
+                <!-- <div class="mx-2">
+                    <a href="/wallet/settings" class="hover:underline">Setting</a>
+                </div> -->
             </div>
-            <a href="/wallet/home">
-                <div class="p-2 cursor-pointer border-gray-700 border rounded hover:bg-gray-100">wallet</div>
+            <a href="/wallet/settings" class="link">
+                <%=wallet.id%>
             </a>
         </div>
-        <div class="border-b-2 border-gray-700 pb-1 w-full"></div>
-        <!-- <div class=""></div> -->
         <div class="p-2">
             <%- body %>
         </div>

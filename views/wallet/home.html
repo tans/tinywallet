@@ -1,0 +1,107 @@
+<div id="app" class="mt-4">
+    <div class="my-4"><span class="badge badge-sm badge-primary">Address</span> <span
+            class="text-gray-300">{{address}}</span></div>
+    <div class="rounded p-4 my-4 bg-blue-50" v-for=" networkV, network of balances">
+        <div class="font-black flex items-center">
+            <div class="flex-1">{{network | displayName}} <span v-if="network=='ropsten'"
+                    class="badge badge-sm badge-secondary">TEST
+                    NETWORK</span></div>
+            <div class="btn btn-sm" @click="openAddToken(network)">Add Token</div>
+        </div>
+        <div class="font-black">ETH Balance: {{networkV.balance | displayBalance}}</div>
+        <div class="stats shadow mt-4" v-for="tokenV, token in networkV" v-if="token.indexOf('0x')==0">
+            <div class="stat text-ellipsis overflow-hidden">
+                <div class="stat-title flex">
+                    <div class="flex-1">{{tokenV.symbol}}</div>
+                </div>
+                <div class="font-black text-ellipsis overflow-hidden max-w-fit">
+                    {{tokenV.balance | displayBalance}}
+                </div>
+                <!-- <div class="stat-desc"></div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-mask" @click="addTokenData = null" v-if="addTokenData"></div>
+    <div class="weui-half-screen-dialog" v-if="addTokenData">
+        <div class="weui-half-screen-dialog__hd">
+            <div>
+                Add Token
+            </div>
+        </div>
+        <div class="weui-half-screen-dialog__bd">
+            <div class="mx-auto max-w-sm">
+                <div class="font-black">contract address</div>
+                <div class="py-4">
+                    <input v-model="addTokenData.contractAddress" class="input  input-bordered w-full" />
+                </div>
+                <div @click="addToken" class="btn btn-wide btn-sm btn-primary my-2">
+                    ADD
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const address = "<%=wallet.address%>"
+    const DisplayNames = {
+        'homestead': "Ethereum Mainnet",
+        'ropsten': "Ropsten"
+    }
+    const app = new Vue({
+        el: "#app",
+        data: () => {
+            return {
+                address: address,
+                addTokenData: null,
+                balances: {}
+            }
+        },
+        created: function () {
+            let that = this;
+            this.load()
+        },
+        filters: {
+            displayName: function (network) {
+                return DisplayNames[network] ? DisplayNames[network] : network
+            },
+            displayBalance: function (balance) {
+                let num = new BigNumber(balance.value)
+                if (balance.decimals) {
+                    number = num.dividedBy(Math.pow(10, balance.decimals))
+                } else {
+                    number = num.dividedBy(Math.pow(10, 18))
+                }
+                return number.toFixed(4)
+            }
+        },
+        methods: {
+            load: function () {
+                let that = this;
+                axios.get('/api/wallet/' + address + '/balances').then(function (res) {
+                    that.balances = res.data
+                })
+            },
+            openAddToken: function (network) {
+                this.addTokenData = {
+                    network: network
+                }
+            },
+            addToken: function () {
+                let that = this;
+                loading = weui.loading()
+                axios.post('/api/wallet/balances/token/add', {
+                    address: address,
+                    network: this.addTokenData.network,
+                    contractAddress: this.addTokenData.contractAddress
+                }).then(function () {
+                    loading.hide();
+                    that.addTokenData = null
+                    that.load();
+                })
+            }
+        }
+    })
+</script>

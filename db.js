@@ -6,4 +6,7 @@ WALLETS = DB.get(PREFIX + "wallets");
 
 module.exports = {
     WALLETS: WALLETS,
+    getPluginCol: (name) => {
+        return DB.get(PREFIX + "plugin_" + name);
+    },
 };
